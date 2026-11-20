@@ -250,7 +250,7 @@ FEATURES:
                                 Binary Search, Trees & BSTs, Sliding Window
   - Core Motto:                 "650+ PROBLEMS. HUNDREDS OF EDGE CASES.
                                  ONE CONTINUOUS LEARNING CURVE."
-  - Profile:                    https://leetcode.com/u/Akshat-Jain02`,
+  - Profile:                    https://leetcode.com/u/wRTkNlWd5L`,
         });
         break;
 
@@ -323,9 +323,14 @@ COURSEWORK:
   Email:        akshat.jain0411@gmail.com
   LinkedIn:     https://www.linkedin.com/in/akshat-jain-7b92a5313/
   GitHub:       https://github.com/Akshat-Jain-sudo
-  LeetCode:     https://leetcode.com/u/Akshat-Jain-sudo (650+ Solved)
-  Codeforces:   https://codeforces.com/profile/Akshat-Jain (220+ Solved)
-  CodeChef:     https://www.codechef.com/users/akshat_jain02 (180+ Solved)
+  LeetCode:     https://leetcode.com/u/wRTkNlWd5L (650+ Solved)
+  Codeforces:   https://codeforces.com/profile/akshat.jain0411 (220+ Solved)
+  CodeChef:     https://www.codechef.com/users/writer0411 (180+ Solved)
+  GeeksforGeeks:https://www.geeksforgeeks.org/user/akshatjac1tg (150+ Solved)
+  CodeStudio:   https://www.naukri.com/code360/profile/7df04252-3450-45b4-bc5b-a992
+  HackerRank:   https://www.hackerrank.com/profile/akshat_jain0411
+  AtCoder:      https://atcoder.jp/users/Wwriter
+  AlgoMaster:   https://algomaster.io/profile/akshat-jain
   Phone:        +91-6284168704 (Optional)
   Location:     New Delhi, India (UTC+5:30 IST)`,
         });

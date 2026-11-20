@@ -207,7 +207,7 @@ export const AlgorithmScanner: React.FC = () => {
               ALGORITHM <span className="text-[#38bdf8]">SCANNER</span>
             </h2>
             <div className="mt-3 font-mono-tech text-xs sm:text-sm text-zinc-300 font-semibold border-l-2 border-[#38bdf8] pl-3 py-0.5">
-              "1,200+ PROBLEMS ACROSS LEETCODE, CODEFORCES, CODECHEF & GFG."
+              "1,200+ PROBLEMS ACROSS LEETCODE, CODEFORCES, CODECHEF, GFG, CODESTUDIO & HACKERRANK."
             </div>
             <p className="mt-2 text-zinc-400 font-sans-tech max-w-xl text-sm">
               Real-time telemetry tracking solved algorithmic questions across competitive programming platforms,
@@ -218,7 +218,7 @@ export const AlgorithmScanner: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="https://leetcode.com/u/Akshat-Jain-sudo"
+              href="https://leetcode.com/u/wRTkNlWd5L"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 border border-zinc-700 bg-zinc-900/90 px-4 py-2 font-mono-tech text-xs font-bold text-zinc-200 hover:border-[#38bdf8] hover:text-[#38bdf8] transition-all cursor-pointer rounded-xs"
@@ -242,7 +242,7 @@ export const AlgorithmScanner: React.FC = () => {
           <div className="flex items-center justify-between mb-3 text-xs font-mono-tech text-zinc-500">
             <span className="flex items-center gap-1.5 text-zinc-400 font-bold uppercase tracking-wider">
               <Code2 className="h-3.5 w-3.5 text-[#38bdf8]" />
-              SIMULTANEOUS PLATFORM TRACKING (LEETCODE // CODEFORCES // CODECHEF // GFG)
+              SIMULTANEOUS PLATFORM TRACKING (8 VERIFIED PLATFORMS)
             </span>
             <span className="text-zinc-500 hidden sm:inline">LIVE PROFILES LINKED</span>
           </div>
