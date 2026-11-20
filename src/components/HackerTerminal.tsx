@@ -67,7 +67,7 @@ export const HackerTerminal: React.FC = () => {
   ipl           - Inspect IPL Live Win-Probability ML model & calibration
   symbiote      - Deep architectural inspection of Project Symbiote (8 stores)
   codetoword    - Inspect Code to Word VS Code extension specs & AI router
-  dsa           - Algorithmic telemetry: 650+ LeetCode problems solved in C++
+  dsa           - Algorithmic telemetry: 730+ LeetCode problems solved in C++
   education     - University credentials at DTU (CGPA: 8.97) & entrance ranks
   certifications- Verified industry credentials (DeepLearning.AI, IBM, Kaggle)
   resume        - Recruiter dossier summary & link to quick-sheet
@@ -88,7 +88,7 @@ INSTITUTION:  Delhi Technological University (DTU) — B.Tech IT (2024 – Prese
 LOCATION:     New Delhi, India [28.6139°N / 77.2090°E]
 ACADEMIC:     Current CGPA: 8.97 / 10.0 (Sem I: 9.20 | Sem II: 8.80 | Sem III: 9.17 | Sem IV: 8.73)
 ENTRANCE:     JEE Main AIR 6690 (99.59 %ile) | JEE Advanced AIR 8417
-PROBLEM SOLV: 650+ LeetCode Problems Solved in C++
+PROBLEM SOLV: 730+ LeetCode Problems Solved in C++ (Rank #90,004)
 EMAIL:        akshat.jain0411@gmail.com
 LINKEDIN:     https://www.linkedin.com/in/akshat-jain-7b92a5313/`,
         });
@@ -108,7 +108,7 @@ LINKEDIN:     https://www.linkedin.com/in/akshat-jain-7b92a5313/`,
           type: 'output',
           content: `VERIFIED TECHNICAL STACK (5 CATEGORIES):
   [PROGRAMMING LANGUAGES]
-  - C++ (Primary Language, STL, 650+ DSA)
+  - C++ (Primary Language, STL, 730+ DSA Solved)
   - SQL (Complex Joins, Window Functions, Dimensional Schemas)
   - Python (ML Modeling, Polars/Pandas Benchmarking, FastAPI)
   - C (Low-Level Systems Foundations)
@@ -244,11 +244,11 @@ FEATURES:
           id: `${Date.now()}-out`,
           type: 'output',
           content: `ALGORITHMIC TELEMETRY:
-  - Total Verified Submissions: 650+ Problems in C++
+  - Total Verified Submissions: 730+ Problems in C++ (Rank #90,004)
   - Core Language:              C++ (STL, Asymptotic Complexity Focus)
   - Core Domains:               Dynamic Programming (1D/2D/3D), Graph Theory,
                                 Binary Search, Trees & BSTs, Sliding Window
-  - Core Motto:                 "650+ PROBLEMS. HUNDREDS OF EDGE CASES.
+  - Core Motto:                 "730+ PROBLEMS. HUNDREDS OF EDGE CASES.
                                  ONE CONTINUOUS LEARNING CURVE."
   - Profile:                    https://leetcode.com/u/wRTkNlWd5L`,
         });
@@ -309,7 +309,7 @@ COURSEWORK:
                 2. IPL Live Win-Probability ML Model
                 3. Symbiote (8 stores price comparator)
                 4. Code to Word VS Code extension
-  LeetCode:     650+ Problems solved in C++
+  LeetCode:     730+ Problems solved in C++ (Rank #90,004)
   Click the [ RESUME ] button in the top navigation or transmission footer to inspect/print.`,
         });
         break;
@@ -323,7 +323,7 @@ COURSEWORK:
   Email:        akshat.jain0411@gmail.com
   LinkedIn:     https://www.linkedin.com/in/akshat-jain-7b92a5313/
   GitHub:       https://github.com/Akshat-Jain-sudo
-  LeetCode:     https://leetcode.com/u/wRTkNlWd5L (650+ Solved)
+  LeetCode:     https://leetcode.com/u/wRTkNlWd5L (730+ Solved, Rank #90,004)
   Codeforces:   https://codeforces.com/profile/akshat.jain0411 (220+ Solved)
   CodeChef:     https://www.codechef.com/users/writer0411 (180+ Solved)
   GeeksforGeeks:https://www.geeksforgeeks.org/user/akshatjac1tg (150+ Solved)

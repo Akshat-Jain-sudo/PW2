@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Application, Graphics, Container } from 'pixi.js';
-import { Radio, Target, Zap, RotateCw, Crosshair, Award, ExternalLink, Code2 } from 'lucide-react';
+import { Radio, Target, Zap, RotateCw, Crosshair, Award, ExternalLink, Code2, Trophy } from 'lucide-react';
 import { DSA_TOPIC_NODES, CP_PLATFORMS } from '../data/portfolioData';
 import type { DSATopicNode } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
+import { useLeetCodeStats } from '../hooks/useLeetCodeStats';
 
 export const AlgorithmScanner: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [lockedTopic, setLockedTopic] = useState<DSATopicNode | null>(DSA_TOPIC_NODES[0]);
   const [sweepSpeed, setSweepSpeed] = useState(1);
   const [scanPulseActive, setScanPulseActive] = useState(false);
+  const { stats: lcStats, loading: lcLoading, isLive: lcIsLive, refetch: lcRefetch } = useLeetCodeStats('wRTkNlWd5L');
 
   useEffect(() => {
     let app: Application | null = null;
@@ -237,6 +239,187 @@ export const AlgorithmScanner: React.FC = () => {
           </div>
         </div>
 
+        {/* LeetCode Real-Time Telemetry Deck */}
+        <div className="mb-8 border border-zinc-800 bg-[#0c0d12] p-5 sm:p-6 text-left relative overflow-hidden">
+          {/* Subtle Top Accent Glow */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e2b13c] to-transparent opacity-60" />
+
+          {/* Deck Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-800/80 mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-[#e2b13c]/10 border border-[#e2b13c]/30 flex items-center justify-center text-[#e2b13c]">
+                <Trophy className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-mono-tech text-sm font-bold text-white tracking-wide">
+                    LEETCODE REAL-TIME TELEMETRY
+                  </h3>
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-mono-tech uppercase font-semibold rounded ${
+                      lcLoading
+                        ? 'bg-sky-500/10 text-sky-400 border border-sky-500/30'
+                        : lcIsLive
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                        : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                    }`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        lcLoading
+                          ? 'bg-sky-400 animate-pulse'
+                          : lcIsLive
+                          ? 'bg-emerald-400 animate-ping'
+                          : 'bg-amber-400'
+                      }`}
+                    />
+                    {lcLoading ? 'SYNCING API...' : lcIsLive ? 'LIVE STREAM' : 'CACHED FEED'}
+                  </span>
+                </div>
+                <div className="font-mono-tech text-xs text-zinc-400 mt-0.5">
+                  TARGET HANDLE: <span className="text-[#38bdf8] font-bold">@wRTkNlWd5L</span> · DTU C++ SYSTEMS PIPELINE
+                </div>
+              </div>
+            </div>
+
+            {/* Deck Controls */}
+            <div className="flex items-center gap-2 self-start sm:self-auto">
+              <button
+                onClick={() => lcRefetch()}
+                disabled={lcLoading}
+                className="flex items-center gap-1.5 border border-zinc-700 bg-zinc-900 px-3 py-1.5 font-mono-tech text-xs text-zinc-300 hover:text-white hover:border-[#e2b13c] transition-all cursor-pointer rounded-xs disabled:opacity-50"
+                title="Fetch latest questions and ranking from LeetCode"
+              >
+                <RotateCw className={`h-3.5 w-3.5 text-[#e2b13c] ${lcLoading ? 'animate-spin' : ''}`} />
+                <span>{lcLoading ? 'SYNCING...' : 'REFRESH'}</span>
+              </button>
+
+              <a
+                href="https://leetcode.com/u/wRTkNlWd5L"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 border border-zinc-700 bg-zinc-900 px-3 py-1.5 font-mono-tech text-xs text-zinc-300 hover:text-[#38bdf8] hover:border-[#38bdf8] transition-all rounded-xs"
+              >
+                <span>OPEN PROFILE</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+
+          {/* 4 Core Metrics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+            {/* Metric 1: Total Solved */}
+            <div className="border border-zinc-800/80 bg-zinc-900/50 p-3.5 rounded-xs">
+              <span className="font-mono-tech text-[10px] text-zinc-400 tracking-wider block">TOTAL QUESTIONS SOLVED</span>
+              <div className="flex items-baseline gap-1 mt-1">
+                <span className="font-mono-tech text-2xl sm:text-3xl font-extrabold text-[#38bdf8]">
+                  {lcStats.totalSolved}
+                </span>
+                <span className="font-mono-tech text-xs text-zinc-400">/ {lcStats.totalQuestions}</span>
+              </div>
+              <span className="font-mono-tech text-[10px] text-emerald-400 block mt-1">● Live Synchronized</span>
+            </div>
+
+            {/* Metric 2: Global Ranking */}
+            <div className="border border-zinc-800/80 bg-zinc-900/50 p-3.5 rounded-xs">
+              <span className="font-mono-tech text-[10px] text-zinc-400 tracking-wider block">GLOBAL RANKING</span>
+              <div className="flex items-baseline gap-1 mt-1">
+                <span className="font-mono-tech text-2xl sm:text-3xl font-extrabold text-[#e2b13c]">
+                  #{lcStats.ranking.toLocaleString()}
+                </span>
+              </div>
+              <span className="font-mono-tech text-[10px] text-zinc-400 block mt-1">Top Tier Worldwide</span>
+            </div>
+
+            {/* Metric 3: Total Submissions */}
+            <div className="border border-zinc-800/80 bg-zinc-900/50 p-3.5 rounded-xs">
+              <span className="font-mono-tech text-[10px] text-zinc-400 tracking-wider block">TOTAL SUBMISSIONS</span>
+              <div className="flex items-baseline gap-1 mt-1">
+                <span className="font-mono-tech text-2xl sm:text-3xl font-extrabold text-[#a78bfa]">
+                  {lcStats.totalSubmissions.toLocaleString()}
+                </span>
+              </div>
+              <span className="font-mono-tech text-[10px] text-zinc-400 block mt-1">Evaluated Code Runs</span>
+            </div>
+
+            {/* Metric 4: Acceptance Rate */}
+            <div className="border border-zinc-800/80 bg-zinc-900/50 p-3.5 rounded-xs">
+              <span className="font-mono-tech text-[10px] text-zinc-400 tracking-wider block">ACCEPTANCE RATE</span>
+              <div className="flex items-baseline gap-1 mt-1">
+                <span className="font-mono-tech text-2xl sm:text-3xl font-extrabold text-[#34d399]">
+                  {lcStats.acceptanceRate}
+                </span>
+              </div>
+              <span className="font-mono-tech text-[10px] text-zinc-400 block mt-1">Optimal C++ Runs</span>
+            </div>
+          </div>
+
+          {/* Breakdown Progress Bars */}
+          <div className="border border-zinc-800/60 bg-black/40 p-3.5 rounded-xs space-y-3">
+            <div className="flex items-center justify-between text-xs font-mono-tech text-zinc-400 mb-1">
+              <span className="font-bold uppercase tracking-wider text-zinc-300">DIFFICULTY BREAKDOWN & ASYMPTOTIC COVERAGE</span>
+              <span className="text-[11px] text-zinc-400">LAST SYNCED: {lcStats.lastUpdated}</span>
+            </div>
+
+            {/* Easy Bar */}
+            <div>
+              <div className="flex justify-between text-xs font-mono-tech mb-1">
+                <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  EASY: {lcStats.easySolved}
+                </span>
+                <span className="text-zinc-400 text-[11px]">
+                  {lcStats.easySolved} / {lcStats.totalEasy} ({((lcStats.easySolved / lcStats.totalEasy) * 100).toFixed(1)}%)
+                </span>
+              </div>
+              <div className="w-full bg-zinc-800 h-2 rounded-xs overflow-hidden">
+                <div
+                  className="bg-emerald-500 h-full rounded-xs transition-all duration-500"
+                  style={{ width: `${Math.min(100, (lcStats.easySolved / lcStats.totalEasy) * 100)}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Medium Bar */}
+            <div>
+              <div className="flex justify-between text-xs font-mono-tech mb-1">
+                <span className="text-amber-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  MEDIUM (CORE DSA FOCUS): {lcStats.mediumSolved}
+                </span>
+                <span className="text-zinc-400 text-[11px]">
+                  {lcStats.mediumSolved} / {lcStats.totalMedium} ({((lcStats.mediumSolved / lcStats.totalMedium) * 100).toFixed(1)}%)
+                </span>
+              </div>
+              <div className="w-full bg-zinc-800 h-2 rounded-xs overflow-hidden">
+                <div
+                  className="bg-amber-400 h-full rounded-xs transition-all duration-500"
+                  style={{ width: `${Math.min(100, (lcStats.mediumSolved / lcStats.totalMedium) * 100)}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Hard Bar */}
+            <div>
+              <div className="flex justify-between text-xs font-mono-tech mb-1">
+                <span className="text-rose-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                  HARD: {lcStats.hardSolved}
+                </span>
+                <span className="text-zinc-400 text-[11px]">
+                  {lcStats.hardSolved} / {lcStats.totalHard} ({((lcStats.hardSolved / lcStats.totalHard) * 100).toFixed(1)}%)
+                </span>
+              </div>
+              <div className="w-full bg-zinc-800 h-2 rounded-xs overflow-hidden">
+                <div
+                  className="bg-rose-500 h-full rounded-xs transition-all duration-500"
+                  style={{ width: `${Math.min(100, (lcStats.hardSolved / lcStats.totalHard) * 100)}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Multi-Platform Competitive Programming Telemetry Grid */}
         <div className="mb-8 text-left">
           <div className="flex items-center justify-between mb-3 text-xs font-mono-tech text-zinc-500">
@@ -248,48 +431,58 @@ export const AlgorithmScanner: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {CP_PLATFORMS.map((plat) => (
-              <a
-                key={plat.platform}
-                href={plat.profileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative border border-zinc-800 bg-[#0e0e13] hover:border-zinc-600 p-4 transition-all duration-200 block text-left"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 flex items-center justify-center border border-zinc-800 bg-zinc-900 text-xs font-mono-tech font-bold text-white rounded">
-                      {plat.iconName}
-                    </span>
-                    <div>
-                      <div className="text-sm font-bold text-white group-hover:text-[#38bdf8] transition-colors flex items-center gap-1">
-                        {plat.platform}
-                        <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400" />
+            {CP_PLATFORMS.map((plat) => {
+              const isLeetCode = plat.platform === 'LeetCode';
+              const displaySolved = isLeetCode ? lcStats.totalSolved : plat.solvedCount;
+              const displayRating = isLeetCode ? `#${lcStats.ranking.toLocaleString()}` : plat.rating;
+              const displayStatus = isLeetCode ? (lcIsLive ? '● Live Stream' : 'Live Sync') : plat.status;
+
+              return (
+                <a
+                  key={plat.platform}
+                  href={plat.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative border border-zinc-800 bg-[#0e0e13] hover:border-zinc-600 p-4 transition-all duration-200 block text-left"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-7 h-7 flex items-center justify-center border border-zinc-800 bg-zinc-900 text-xs font-mono-tech font-bold text-white rounded">
+                        {plat.iconName}
+                      </span>
+                      <div>
+                        <div className="text-sm font-bold text-white group-hover:text-[#38bdf8] transition-colors flex items-center gap-1">
+                          {plat.platform}
+                          {isLeetCode && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" title="Live Sync Active" />
+                          )}
+                          <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400" />
+                        </div>
+                        <div className="text-[10px] font-mono-tech text-zinc-500">@{plat.handle}</div>
                       </div>
-                      <div className="text-[10px] font-mono-tech text-zinc-500">@{plat.handle}</div>
+                    </div>
+                    <span className={`text-[10px] font-mono-tech px-1.5 py-0.5 border ${plat.badgeBorder} ${plat.badgeColor} bg-black/40 rounded`}>
+                      {displayRating}
+                    </span>
+                  </div>
+
+                  <div className="mt-3 pt-2.5 border-t border-zinc-800/80 flex items-baseline justify-between">
+                    <div>
+                      <span className="text-[10px] font-mono-tech text-zinc-500 block">SOLVED:</span>
+                      <span className="text-xl font-mono-tech font-extrabold text-white">
+                        {displaySolved}+
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-mono-tech text-zinc-500 block">STATUS:</span>
+                      <span className="text-[11px] font-mono-tech text-zinc-300">
+                        {displayStatus}
+                      </span>
                     </div>
                   </div>
-                  <span className={`text-[10px] font-mono-tech px-1.5 py-0.5 border ${plat.badgeBorder} ${plat.badgeColor} bg-black/40 rounded`}>
-                    {plat.rating}
-                  </span>
-                </div>
-
-                <div className="mt-3 pt-2.5 border-t border-zinc-800/80 flex items-baseline justify-between">
-                  <div>
-                    <span className="text-[10px] font-mono-tech text-zinc-500 block">SOLVED:</span>
-                    <span className="text-xl font-mono-tech font-extrabold text-white">
-                      {plat.solvedCount}+
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] font-mono-tech text-zinc-500 block">STATUS:</span>
-                    <span className="text-[11px] font-mono-tech text-zinc-300">
-                      {plat.status}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
 
